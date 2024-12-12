@@ -7,10 +7,15 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
+//เป็นการเพิ่มเอง
+import { provideHttpClient } from '@angular/common/http';
+import { HttpClient,HttpClientModule } from '@angular/common/http';
+import { DataapiService } from './dataapi.service';
+
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },HttpClient,DataapiService,provideHttpClient()],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
